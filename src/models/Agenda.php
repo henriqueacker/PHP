@@ -1,6 +1,8 @@
 <?php
+namespace src\models;
+use core\Model;
 
-class Agenda{
+class Agenda extends Model{
     private $Data;
     private $Hora;
     private $Cliente;

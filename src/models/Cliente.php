@@ -1,6 +1,10 @@
 <?php
+namespace src\models;
+use core\Model;
 
-class Cliente{
+
+
+class Cliente extends Model{
     private $IdCliente;
     private $Nome;
     private $Email;
