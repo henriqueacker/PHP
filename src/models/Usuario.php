@@ -1,8 +1,8 @@
 <?php
 
+use core\Model;
 
-
-class Usuario{
+class Usuario extends Model{
     private $Email;
     private $Senha;
     private $IdUsuario;
