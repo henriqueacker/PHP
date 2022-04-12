@@ -70,7 +70,7 @@
     <body>
         <div class="container">
             <div class="content">
-                 <form method="POST" > 
+                 <form method="post" action="<?=$base;?>/"> 
                      <div class="field">          
                      <input type="email" name="email" placeholder="Email" required/>
                      </div>
