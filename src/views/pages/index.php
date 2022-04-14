@@ -1,4 +1,5 @@
-
+<?php $render('header'); ?>
+<?php $render('menu');?>
 <!DOCTYPE html>
 <html>
     <head>
