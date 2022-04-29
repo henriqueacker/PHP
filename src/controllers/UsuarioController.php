@@ -8,8 +8,9 @@ class UsuarioController extends Controller{
 
     public function add(){
         $this->render('add');
-    }
-    public function addUser(){
+}
+    public function addUsuario(){
+        $nick = filter_input(INPUT_POST, 'nick');
         $email = filter_input(INPUT_POST, 'email');
         $senha = filter_input(INPUT_POST, 'password');
 
@@ -20,7 +21,8 @@ class UsuarioController extends Controller{
             if(count($data) === 0){
                 Usuario::insert([
                     'email'=>$email,
-                    'senha'=>$novaSenha     
+                    'senha'=>$novaSenha,
+                    'nick'=>$nick  
                 ])->execute();  
             }
         }
@@ -37,15 +39,14 @@ class UsuarioController extends Controller{
             echo "<script>alert('Senha/Login invalidos')</script>";
             echo "<script>history.back() </script>";
        }else{
-           
+           $_SESSION['logado'] = true;
            $this->render('404');
-           echo $_SESSION['logado'];
        }
     }
-    public function listaTodos(){
-        Usuario::select()->get();
+    public function deslogar(){
+        session_unset();
+        session_destroy();
+        $this->render('index');
     }
-    public function editar(){
-
-    }
+   
 }
