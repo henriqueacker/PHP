@@ -1,0 +1,43 @@
+
+           .container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            background-color: #020202;
+        }
+
+            .content {
+                text-align: center;
+                display: inline-block;
+            }
+            .field{
+                margin: 5px;
+                padding: 5px;
+            }
+            .field input{
+                border-radius: 5px;
+                font-size: 20px;
+                width: 250px;
+            }
+            .btnEntrar input{
+                
+                font-size: 20px;
+                height: 30px;
+                width: 260px;
+                border-radius: 5px;
+                margin: 7px;
+            }
+
+            .link{
+                text-decoration: none;
+                color: lightgreen;
+                font-size: 15px;
+                
+            }
+            a:hover{
+                color: white;
+            }
+            .logo{
+                color: lightgreen;
+            }
+          

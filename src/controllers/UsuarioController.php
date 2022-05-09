@@ -7,7 +7,7 @@ use src\models\Usuario;
 class UsuarioController extends Controller{
 
     public function add(){
-        $this->render('add');
+        $this->render('register');
 }
     public function addUsuario(){
         $nick = filter_input(INPUT_POST, 'nick');
