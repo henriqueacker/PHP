@@ -1,0 +1,38 @@
+CREATE table usuarios (
+    id int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    email varchar(100) not null,
+    senha varchar(200) not null,
+    nome varchar(100) not null,
+    dt_nascimento date NOT NULL, 
+    cidade varchar(100) NOT NULL,
+    avatar varchar(100),
+    capa varchar(100),
+    token varchar(100)
+    );
+
+CREATE table relacoes_usuarios(
+	id int PRIMARY KEY AUTO_INCREMENT not null,
+    	usuario_from int(11),
+    	usuario_to int(11)
+
+);
+CREATE TABLE posts(
+	id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    tipo varchar(20)not null,
+    dt_criacao datetime  NOT NULL,
+    corpo text NOT NULL
+);
+
+CREATE TABLE comentarios(
+    id int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_post int(11) NOT NULL,
+    id_usuario int(11) NOT NULL,
+    dt_criacao datetime NOT NULL,
+    corpo textNOT NULL
+);
+CREATE TABLE likes(
+	id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id_post int(11) NOT NULL,
+    id_usuario int(11) NOT NULL,
+    dt_criacao datetime NOT NULL
+);
