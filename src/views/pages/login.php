@@ -5,7 +5,7 @@
         <title>Login - Community X</title>
         
         <link href="https://fonts.googleapis.com/css?family=Karla:400" rel="stylesheet" type="text/css">
-        <link href="<?=$base?>/css/home.css" rel="stylesheet" type="text/css">
+        <link href="<?=$base?>/css/login.css" rel="stylesheet" type="text/css">
         <link href="<?=$base?>/css/geral.css" rel="stylesheet" type="text/css">
         
     </head>

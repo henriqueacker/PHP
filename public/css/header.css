@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    
+}
+p{
+    color: #02f801;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #020202;
+    
+}
+input{
+    margin: 10px;
+}
+.pesquisa{
+   border-radius: 10px;
+}
