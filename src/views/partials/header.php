@@ -8,14 +8,22 @@
     
 </head>
 <body>
-        <div class="header">
-        <img src='<?=$base?>/assets/header.png' height="40" width="40"/>
-        <p>Community X</p>
-        <form method="get" action="<?=$base;?>/pesquisa"><input class='pesquisa' type='search' value="Pesquisar" name='pesquisa' /> </form>
-        <p><?=$loggedUser->getNome(); ?></p>
-        <img src="<?=$base;?>/assets/<?=$loggedUser->getAvatar();?>" />
+        <header>
+        <div class="logo">
+            <img src='<?=$base?>/assets/header.png'/>
         </div>
         
+        <form method="get" action="<?=$base;?>/pesquisa">
+        <input class='pesquisa' type='text' placeholder="Pesquisar" name='pesquisa' id='pesquisa' /> 
+        </form>
 
+        <p><?=$loggedUser->getNome(); ?></p>
+
+        <img class="avatar" src="<?=$base;?>/assets/<?=$loggedUser->getAvatar();?>" />
+
+        </header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="<?=$base;?>/js/script.js" ></script>
+ 
 </body>
 </html>
