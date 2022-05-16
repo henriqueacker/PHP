@@ -5,16 +5,43 @@
 p{
     color: #02f801;
 }
-.header{
+header{
     display: flex;
     align-items: center;
     justify-content: space-around;
     background-color: #020202;
     
 }
-input{
-    margin: 10px;
+.logo img{
+    width: 40px;
+    height: 40px;
 }
+
+input{
+    background-image: url('../assets/icons/search.png');
+    background-size: 13px;
+    background-position-x: 10px;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    width:200px;
+    height:25px;
+    border-radius:15px;
+    border:0;
+    outline:0;
+    padding-left:30px;
+    transition: all .3s;
+}
+input:focus{
+    width:300px;
+    background-color: #FFF;
+    
+}
+
 .pesquisa{
    border-radius: 10px;
+}
+.avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
 }
