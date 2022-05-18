@@ -9,6 +9,7 @@
 </head>
 <body>
     <?= $render('header', ['loggedUser'=>$loggedUser]);?>
-    
+    <?= $render('menu', ['loggedUser'=>$loggedUser]);?>
+    <?= $render('conteudo', ['loggedUser'=>$loggedUser]);?>
 </body>
 </html>

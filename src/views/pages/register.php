@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laragon</title>
+        <title>Community X</title>
    
         <link href="https://fonts.googleapis.com/css?family=Karla:400" rel="stylesheet" type="text/css">
         <link href="<?=$base?>/css/register.css" rel="stylesheet" type="text/css">

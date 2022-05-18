@@ -28,7 +28,7 @@
                     <input type="submit" value="Entrar"/>
                     </div>
 
-                    <a class="link" href="<?=$base?>/cadastro">Não possui cadastro? Realize o cadastro</a>
+                    <a class="link" href="<?=$base?>/novo">Não possui cadastro? Realize o cadastro</a>
                  
                  </form>
                

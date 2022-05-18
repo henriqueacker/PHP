@@ -10,16 +10,19 @@
 <body>
         <header>
         <div class="logo">
-            <img src='<?=$base?>/assets/header.png'/>
+           <a href="<?=$base?>/"><img src='<?=$base?>/assets/header.png'/> </a>
         </div>
         
         <form method="get" action="<?=$base;?>/pesquisa">
         <input class='pesquisa' type='text' placeholder="Pesquisar" name='pesquisa' id='pesquisa' /> 
         </form>
 
-        <p><?=$loggedUser->getNome(); ?></p>
-
-        <img class="avatar" src="<?=$base;?>/assets/<?=$loggedUser->getAvatar();?>" />
+        <div class='logo-left'>
+        <p class="nome"><?=$loggedUser->getNome(); ?></p>
+        <a href="<?=$base?>/perfil"> <img class="avatar" src="<?=$base;?>/assets/<?=$loggedUser->getAvatar();?>" /> </a>
+        <a href="<?=$base?>/sair"><img class='logout' src='<?=$base?>/assets/icons/power_white.png'/></a> 
+        </div>
+        
 
         </header>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
