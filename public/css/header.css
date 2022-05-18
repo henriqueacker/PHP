@@ -45,3 +45,20 @@ input:focus{
     height: 30px;
     border-radius: 30px;
 }
+.logo-left{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    
+}
+.logout{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+   
+
+}
+.nome{
+    margin: 5px;
+    margin-right: 5px;
+}
