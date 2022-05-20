@@ -11,24 +11,20 @@
 </head>
 
 <body>
-
     <div class="header">
         <?= $render('header', ['loggedUser' => $loggedUser]); ?>
-
     </div>
+
     <div class="menu">
         <?= $render('menu', ['loggedUser' => $loggedUser]); ?>
-  
+    </div>
+
+    <div class="feed">
+        <?= $render('feed-editor', ['loggedUser' => $loggedUser]); ?>
+        <?= $render('feed-item', ['loggedUser' => $loggedUser]); ?>
+        <?= $render('footer', ['loggedUser' => $loggedUser]); ?>
     </div>
     
-        <?= $render('feed-editor', ['loggedUser' => $loggedUser]); ?>
-        
-        <?= $render('feed-item', ['loggedUser' => $loggedUser]); ?>
-    </div>
-
-
-
-
 </body>
 
 </html>

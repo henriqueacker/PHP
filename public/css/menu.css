@@ -13,8 +13,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-   
-    height: 500px;
+    height: 400px;
     width: 400px;
     background-color: #202225;
 }
@@ -44,5 +43,6 @@ nav{
 
 ul.separator li {
 	padding: .5em 0;
+    
     
 }

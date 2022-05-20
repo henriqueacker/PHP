@@ -20,7 +20,10 @@
         <li class='menu-item'><a href="<?=$base?>/sair"><img class='icon' src='<?=$base?>/assets/icons/power_white.png'/>Sair</a> </li>
       
         </ul>
+        
     </nav>
+    
+    
 </div>
  
 </body>

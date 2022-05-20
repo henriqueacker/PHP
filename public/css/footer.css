@@ -1,0 +1,18 @@
+.footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.footer-text{
+    color: #02f801;
+    
+}
+
+.linha{
+    background-color: #020202;
+    text-align: center;
+    width: 100vh;
+    height: 2px;
+    margin: 5px;
+}

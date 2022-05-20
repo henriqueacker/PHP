@@ -17,17 +17,26 @@
 
             .menu{
                 display: flex;
-                align-items: flex-end;
+                align-items: flex-start;
                 justify-content: center;
-                flex-direction: row;
-                width: 50%;
+                flex-direction: column;
+                
             }
             .feed{
+                margin: 5px;
+                float: center;
+                margin-bottom:  1.5em;
+                color: white;
+                border:0;
+                padding:  .1em;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                flex-direction: column;
-                width: 100%;
+                font-weight: 600;
+                font-size: 1.1em;
+                border-radius: 6px;
+                transition: ease-in 0.2s;
                      
             }
 
