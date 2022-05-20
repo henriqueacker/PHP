@@ -10,6 +10,7 @@ header{
     align-items: center;
     justify-content: space-around;
     background-color: #020202;
+    width: 100%;
     
 }
 .logo img{
@@ -17,7 +18,7 @@ header{
     height: 40px;
 }
 
-input{
+.pesquisa{
     background-image: url('../assets/icons/search.png');
     background-size: 13px;
     background-position-x: 10px;
@@ -31,7 +32,7 @@ input{
     padding-left:30px;
     transition: all .3s;
 }
-input:focus{
+.pesquisa:focus{
     width:300px;
     background-color: #FFF;
     

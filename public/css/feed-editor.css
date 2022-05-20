@@ -1,0 +1,27 @@
+
+.send-post{
+    background-image: url('../assets/icons/send.png');
+    background-size: 20px;
+    background-position-x: 400px;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    width:400px;
+    height:50px;
+    border-radius: 15px;
+    border:0;
+    outline:0;
+    padding-left:30px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.feed-editor{
+   margin: 5px;
+   display: flex;
+   flex-direction: row;
+}
+.avatar2{
+    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
