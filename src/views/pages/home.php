@@ -21,7 +21,14 @@
 
     <div class="feed">
         <?= $render('feed-editor', ['loggedUser' => $loggedUser]); ?>
-        <?= $render('feed-item', ['loggedUser' => $loggedUser]); ?>
+
+        <?php foreach($feed as $feedItem): ?>
+            <?= $render('feed-item', [
+                'data' => $feedItem
+                
+                ]); ?>
+        <?php endforeach; ?>
+        
         <?= $render('footer', ['loggedUser' => $loggedUser]); ?>
     </div>
     

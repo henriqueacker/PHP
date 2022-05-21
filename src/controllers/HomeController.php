@@ -4,6 +4,9 @@ namespace src\controllers;
 use \core\Controller;
 use src\models\Usuario;
 use src\handlers\LoginHandler;
+use src\handlers\PostHandler;
+
+
 class HomeController extends Controller {
 
     private $loggedUser;
@@ -17,8 +20,14 @@ class HomeController extends Controller {
     }
 
     public function index() {
+
+        $feed = PostHandler::getHomeFeed(
+            $this->loggedUser->getId()
+        );
+
         $this->render('home',[
-            'loggedUser'=>$this->loggedUser
+            'loggedUser'=>$this->loggedUser,
+            'feed'=>$feed
         ]);
     }
 

@@ -11,7 +11,18 @@
 <body>
     <div class="container">
         <div class="box">
-        </div>
+            <img src="<?=$base ?>/assets/<?=$data->user->getAvatar()?>" />
+            <?=$data->user->getNome() ?>
+            <?php
+
+            switch($data->getTipo()){
+                case 'text':
+                    echo 'fez um post';
+                break;                    
+            }
+            ?>
+            <?=date('d/m/Y', strtotime($data->getDt_criacao()));?>
+            <?=nl2br($data->getCorpo()) ?>
     </div>
 </body>
 </html>
