@@ -24,8 +24,8 @@
             <?=date('d/m/Y', strtotime($data->getDt_criacao()));?>
             <?=nl2br($data->getCorpo()) ?>
 
-            <?=$data->likeCount ?>
-            <?=count($data->comments); ?>
+            <span> Curtidas: </span><?=$data->likeCount ?>
+            <span> Comentarios: </span><?=count($data->comments); ?>
     </div>
 </body>
 </html>

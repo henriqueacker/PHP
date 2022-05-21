@@ -39,6 +39,16 @@
                 transition: ease-in 0.2s;
                      
             }
-
-        
+            .feed-pagination a{
+                display: inline-block;
+                padding: 5px;
+                margin: 5px;
+                text-decoration: none;
+            }
+            .feed-pagination a:hover{
+                color: #fff;
+            }
+            .feed-pagination a.active{
+                color: #fff;
+            }
           

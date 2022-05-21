@@ -21,8 +21,9 @@ class PostHandler
             ])->execute();
         }
     }
-    public static function getHomeFeed($idUser)
-    {
+    public static function getHomeFeed($idUser, $page){
+        $perPage = 2;
+
         $userList = RelacaoUsuario::select()->where('usuario_from', $idUser)->get();
         $users = [];
         foreach ($userList as $userItem) {
@@ -30,8 +31,15 @@ class PostHandler
         }
         $users[] = $idUser;
 
-        $postList = Post::select()->where('id_usuario', 'in', $users)->orderBy('dt_criacao', 'desc')->get();
+        $postList = Post::select()
+        ->where('id_usuario', 'in', $users)
+        ->orderBy('dt_criacao', 'desc')
+        ->page($page, $perPage)
+        ->get();
 
+        $totalPost = Post::select()->where('id_usuario', 'in', $users)->count();
+        
+        $totalPost =  ceil($totalPost / $perPage);
         $posts = [];
 
         foreach ($postList as $postItem) {
@@ -45,7 +53,7 @@ class PostHandler
                 $newPost->mine = true;
             }
 
-            $newPost->likeCount = 0;
+            $newPost->likeCount = 1;
             $newPost->liked = false;
             $newPost->comments = [];
 
@@ -60,6 +68,10 @@ class PostHandler
 
             $posts[] = $newPost;
         }
-        return $posts;
+        return [
+            'posts'=> $posts,
+            'totalPost'=> $totalPost, 
+            'currentPage'=> $page
+        ];
     }
 }
