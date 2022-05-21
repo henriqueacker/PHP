@@ -17,4 +17,4 @@ $router->post('/cadastro', 'LoginController@cadastroAction');
 //$router->get('/sair');
 //$router->get('/configuracoes');
 //$router->get('/follow');
-//$router->get('/posts');
+$router->post('/post/new', 'PostController@new');
