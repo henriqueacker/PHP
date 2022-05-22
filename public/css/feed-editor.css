@@ -1,19 +1,5 @@
 
-.send-post{
-    background-image: url('../assets/icons/send.png');
-    background-size: 20px;
-    background-position-x: 400px;
-    background-position-y: center;
-    background-repeat: no-repeat;
-    width:400px;
-    height:50px;
-    border-radius: 15px;
-    border:0;
-    outline:0;
-    padding-left:30px;
-    transition: all .3s;
-    cursor: pointer;
-}
+
 .send{
     width: 40px;
     height: 40px;
@@ -24,18 +10,25 @@
    margin: 5px;
    display: flex;
    flex-direction: row;
+   border-radius: 7px;
+   background-color: #fff;
 }
 .avatar2{
     margin-right: 5px;
+    padding: 5px;
     width: 50px;
     height: 50px;
     border-radius: 30px;
 }
 .feed-new{
-    width: 400px;
+    width: 440px;
     background-color: #fff;
     color: #000;
     border-radius: 10px;
     padding: 5px;
     border: 0;
+}
+.feed-new:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0;
 }

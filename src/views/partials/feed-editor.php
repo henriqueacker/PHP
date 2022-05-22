@@ -13,8 +13,11 @@
 <body>
     <div class="feed-editor">
         <img class="avatar2" src="<?= $base; ?>/assets/<?= $loggedUser->getAvatar(); ?>" />
-        <div class='feed-new' contenteditable="true"></div>
 
+        <div class='feed-new' contenteditable="true">
+
+
+        </div>
         <div class="feed-new-send">
             <img src="<?= $base; ?>/assets/icons/send.png" class="send" />
         </div>
