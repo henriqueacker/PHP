@@ -21,6 +21,7 @@ class ProfileController extends Controller {
 
     public function index($atributos = []) {
         $id = $this->loggedUser->getId();
+        $page = intval(filter_input(INPUT_GET, 'page'));
 
         if(!empty($atributos['id'])){
             $id = $atributos['id'];
@@ -31,10 +32,12 @@ class ProfileController extends Controller {
         if(!$usuario){
             $this->redirect("/");
         }
+        $feed = PostHandler::getUserFeed($id, $page, $this->loggedUser->getId());
 
         $this->render('profile',[
             'loggedUser'=>$this->loggedUser,
-            'usuario'=>$usuario
+            'usuario'=>$usuario,
+            'feed'=>$feed
         ]);
     }
 

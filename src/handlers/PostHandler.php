@@ -21,6 +21,58 @@ class PostHandler
             ])->execute();
         }
     }
+    public function _postListToObject($postList, $loggedUserId){
+        $posts = [];
+
+        foreach ($postList as $postItem) {
+            $newPost = new Post();
+            $newPost->setId($postItem['id']);
+            $newPost->setTipo($postItem['tipo']);
+            $newPost->setDt_criacao($postItem['dt_criacao']);
+            $newPost->setCorpo($postItem['corpo']);
+            $newPost->mine = false;
+            if ($postItem['id_usuario'] == $loggedUserId) {
+                $newPost->mine = true;
+            }
+
+            $newPost->likeCount = 1;
+            $newPost->liked = false;
+            $newPost->comments = [];
+
+
+            //Preencher as informações do Usuarios
+            $newUser = Usuario::select()->where('id', $postItem['id_usuario'])->one();
+
+            $newPost->user = new Usuario();
+            $newPost->user->setId($newUser['id']);
+            $newPost->user->setNome($newUser['nome']);
+            $newPost->user->setAvatar($newUser['avatar']);
+
+            $posts[] = $newPost;
+        }
+        return $posts;
+    }
+    public static function getUserFeed($idUser, $page, $loggedUserId){
+        $perPage = 2;
+
+
+        $postList = Post::select()
+        ->where('id_usuario', $idUser)
+        ->orderBy('dt_criacao', 'desc')
+        ->page($page, $perPage)
+        ->get();
+
+        $totalPost = Post::select()->
+                            where('id_usuario', $idUser)->count();
+        
+        $totalPost =  ceil($totalPost / $perPage);
+        $posts = self::_postListToObject($postList, $loggedUserId);
+        return [
+            'posts'=> $posts,
+            'totalPost'=> $totalPost, 
+            'currentPage'=> $page
+        ];
+    }
     public static function getHomeFeed($idUser, $page){
         $perPage = 2;
 
@@ -40,34 +92,9 @@ class PostHandler
         $totalPost = Post::select()->where('id_usuario', 'in', $users)->count();
         
         $totalPost =  ceil($totalPost / $perPage);
-        $posts = [];
-
-        foreach ($postList as $postItem) {
-            $newPost = new Post();
-            $newPost->setId($postItem['id']);
-            $newPost->setTipo($postItem['tipo']);
-            $newPost->setDt_criacao($postItem['dt_criacao']);
-            $newPost->setCorpo($postItem['corpo']);
-            $newPost->mine = false;
-            if ($postItem['id_usuario'] == $idUser) {
-                $newPost->mine = true;
-            }
-
-            $newPost->likeCount = 1;
-            $newPost->liked = false;
-            $newPost->comments = [];
+        $posts = self::_postListToObject($postList, $idUser);
 
 
-            //Preencher as informações do Usuarios
-            $newUser = Usuario::select()->where('id', $postItem['id_usuario'])->one();
-
-            $newPost->user = new Usuario();
-            $newPost->user->setId($newUser['id']);
-            $newPost->user->setNome($newUser['nome']);
-            $newPost->user->setAvatar($newUser['avatar']);
-
-            $posts[] = $newPost;
-        }
         return [
             'posts'=> $posts,
             'totalPost'=> $totalPost, 

@@ -89,6 +89,18 @@ class UsuarioHandler{
 
                     $usuario->seguidores[] = $novoUsuario;
                 }
+
+                //pegando seguindo
+                $seguindo = RelacaoUsuario::select()->where('usuario_from', $id)->get();
+                foreach($seguindo as $seguidor){
+                    $usuarioData = Usuario::select()->where('id', $seguidor['usuario_to'])->one();
+                    $novoUsuario = new Usuario();
+                    $novoUsuario->setId($usuarioData['id']);
+                    $novoUsuario->setAvatar($usuarioData['avatar']);
+                    $novoUsuario->setNome($usuarioData['nome']);
+
+                    $usuario->seguindo[] = $novoUsuario;
+                }
             }
             return $usuario;
 
