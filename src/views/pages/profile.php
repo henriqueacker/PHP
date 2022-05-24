@@ -41,7 +41,7 @@
 
             <div class="feed-pagination">
             <?php for ($i = 0; $i < $feed['totalPost']; $i++) : ?>
-                <a class="<?= ($i == $feed['currentPage']) ? 'active' : '' ?>" href="<?= $base; ?>/?page=<?= $i; ?>"> <?= $i + 1; ?></a>
+                <a class="<?= ($i == $feed['currentPage']) ? 'active' : '' ?>" href="<?= $base; ?>/perfil/<?=$loggedUser->getId()?>?page=<?= $i; ?>"> <?= $i + 1; ?></a>
             <?php endfor; ?>
             </div>
 
