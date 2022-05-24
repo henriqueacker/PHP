@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?= $base ?>/css/feed-editor.css" rel="stylesheet" type="text/css">
-    <link href="<?= $base ?>/css/geral.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
-</head>
-
-<body>
     <div class="feed-editor">
         <img class="avatar2" src="<?= $base; ?>/assets/<?= $loggedUser->getAvatar(); ?>" />
 
@@ -27,6 +15,7 @@
         </form>
 
     </div>
+    
     <script type="text/javascript">
         let feedInput = document.querySelector('.feed-new');
         let feedSubmit = document.querySelector('.feed-new-send');
@@ -41,6 +30,3 @@
             }
         })
     </script>
-</body>
-
-</html>

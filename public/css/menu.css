@@ -10,12 +10,13 @@ li{
 }
 
 nav{
-    display: flex;
+    margin: 30px;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 50px;
     width: 400px;
     background-color: #202225;
+
 }
 
 .icon{
