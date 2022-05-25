@@ -34,3 +34,16 @@
 .feed-pagination a.active{
     color: #fff;
 }
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 20px;
+    background-color: #02f801;
+    color: #000;
+    border-radius: 10px;
+}
+.button:hover{
+    background-color: #202225;
+}

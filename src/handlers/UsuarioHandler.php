@@ -107,5 +107,16 @@ class UsuarioHandler{
         }
         return false;
     }
+    public static function isFollowing($from, $to ){
+       $data = RelacaoUsuario::select()
+        ->where('usuario_from', $from)
+        ->where('usuario_to', $to)
+        ->one();
+
+        if($data){
+            return true;
+        }
+        return false;
+    }
 }
 

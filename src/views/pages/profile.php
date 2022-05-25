@@ -1,50 +1,55 @@
+<?= $render('header', ['loggedUser' => $loggedUser]); ?>
 
-    <?= $render('header', ['loggedUser' => $loggedUser]); ?>
-    
-    <?= $render('menu', ['loggedUser' => $loggedUser]); ?>
-    <div class="container">
-   
-          
-       
-
-        <img src="<?= $base; ?>/assets/<?= $usuario->getCapa(); ?>" />
-        <span><?= $usuario->getNome(); ?> </span>
-
-        <?php if (!empty($usuario->getCidade())) : ?>
-            <span> <?= $usuario->getCidade(); ?> </span>
-        <?php endif; ?>
-
-        <?php if (!empty($usuario->getDtnascimento())) : ?>
-            <span> <?= date('d/mY', strtotime($usuario->getDtnascimento())); ?> </span>
-        <?php endif; ?>
-
-        <span> Seguidores: <?= count($usuario->seguidores) ?> </span>
-        <span> Seguindo: <?= count($usuario->seguindo) ?> </span>
+<?= $render('menu', ['loggedUser' => $loggedUser]); ?>
+<div class="container">
 
 
 
-        <?php for ($q = 0; $q < 9; $q++) : ?>
-            <?php if (isset($usuario->seguidores[$q])) : ?>
-                <span><?= $usuario->seguidores[$q]->getId() ?></span:>
-                <?php endif; ?>
-            <?php endfor; ?>
 
-            <?= $render('feed-editor', ['loggedUser' => $loggedUser]); ?>
+    <img src="<?= $base; ?>/assets/<?= $usuario->getCapa(); ?>" />
+    <span><?= $usuario->getNome(); ?> </span>
 
-            <?php foreach ($feed['posts'] as $feedItem) : ?>
-                <?= $render('feed-item', [
-                    'data' => $feedItem,
-                    'loggedUser' => $loggedUser
+    <?php if (!empty($usuario->getCidade())) : ?>
+        <span> <?= $usuario->getCidade(); ?> </span>
+    <?php endif; ?>
 
-                ]); ?>
-            <?php endforeach; ?>
+    <?php if (!empty($usuario->getDtnascimento())) : ?>
+        <span> <?= date('d/mY', strtotime($usuario->getDtnascimento())); ?> </span>
+    <?php endif; ?>
 
-            <div class="feed-pagination">
+    <?php if ($usuario->getId() != $loggedUser->getId()) : ?>
+      
+            <a href="<?=$base;?>/perfil/<?=$usuario->getId();?>/follow" class="button"><?=(!$isFollowing)? 'Seguir':'Deixa de seguir'; ?></a>
+      
+    <?php endif; ?>
+
+    <span> Seguidores: <?= count($usuario->seguidores) ?> </span>
+    <span> Seguindo: <?= count($usuario->seguindo) ?> </span>
+
+
+
+    <?php for ($q = 0; $q < 9; $q++) : ?>
+        <?php if (isset($usuario->seguidores[$q])) : ?>
+            <span><?= $usuario->seguidores[$q]->getId() ?></span:>
+            <?php endif; ?>
+        <?php endfor; ?>
+
+        <?= $render('feed-editor', ['loggedUser' => $loggedUser]); ?>
+
+        <?php foreach ($feed['posts'] as $feedItem) : ?>
+            <?= $render('feed-item', [
+                'data' => $feedItem,
+                'loggedUser' => $loggedUser
+
+            ]); ?>
+        <?php endforeach; ?>
+
+        <div class="feed-pagination">
             <?php for ($i = 0; $i < $feed['totalPost']; $i++) : ?>
-                <a class="<?= ($i == $feed['currentPage']) ? 'active' : '' ?>" href="<?= $base; ?>/perfil/<?=$loggedUser->getId()?>?page=<?= $i; ?>"> <?= $i + 1; ?></a>
+                <a class="<?= ($i == $feed['currentPage']) ? 'active' : '' ?>" href="<?= $base; ?>/perfil/<?= $loggedUser->getId() ?>?page=<?= $i; ?>"> <?= $i + 1; ?></a>
             <?php endfor; ?>
-            </div>
+        </div>
 
-    </div>
-   
-    <?= $render('footer', ['loggedUser' => $loggedUser]); ?>
+</div>
+
+<?= $render('footer', ['loggedUser' => $loggedUser]); ?>
