@@ -118,5 +118,17 @@ class UsuarioHandler{
         }
         return false;
     }
+    public static function follow($usuario_from, $usuario_to){
+        RelacaoUsuario::insert([
+            'usuario_from'=> $usuario_from,
+            'usuario_to'=>$usuario_to
+        ])->execute();
+    }
+    public static function unfollow($usuario_from, $usuario_to){
+        RelacaoUsuario::delete()
+            ->where('usuario_from', $usuario_from)
+            ->where('usuario_to', $usuario_to)
+            ->execute();
+    }
 }
 

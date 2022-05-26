@@ -48,6 +48,20 @@ class ProfileController extends Controller {
             'isFollowing'=>$isFollowing
         ]);
     }
+    public  function follow($atributos){
+        $usuario_to =  intval($atributos['id']);
+
+        $exists = UsuarioHandler::verificaId($usuario_to);
+        
+        if($exists){
+            if(UsuarioHandler::isFollowing($this->loggedUser->getId(), $usuario_to)){
+                UsuarioHandler::unfollow($this->loggedUser->getId(), $usuario_to);
+            }else{
+                UsuarioHandler::follow($this->loggedUser->getId(), $usuario_to);
+            }
+        }
+            $this->redirect('/perfil/'.$usuario_to);
+    }
 
 
 

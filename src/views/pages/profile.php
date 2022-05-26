@@ -19,7 +19,7 @@
 
     <?php if ($usuario->getId() != $loggedUser->getId()) : ?>
       
-            <a href="<?=$base;?>/perfil/<?=$usuario->getId();?>/follow" class="button"><?=(!$isFollowing)? 'Seguir':'Deixa de seguir'; ?></a>
+            <a href="<?=$base;?>/perfil/<?=$usuario->getId();?>/follow" class="button"><?=(!$isFollowing)? 'Follow':'Unfollow'; ?></a>
       
     <?php endif; ?>
 
