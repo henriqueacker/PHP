@@ -18,22 +18,26 @@
     <?php endif; ?>
 
     <?php if ($usuario->getId() != $loggedUser->getId()) : ?>
-      
-            <a href="<?=$base;?>/perfil/<?=$usuario->getId();?>/follow" class="button"><?=(!$isFollowing)? 'Follow':'Unfollow'; ?></a>
-      
+
+        <a href="<?= $base; ?>/perfil/<?= $usuario->getId(); ?>/follow" class="button"><?= (!$isFollowing) ? 'Follow' : 'Unfollow'; ?></a>
+
     <?php endif; ?>
 
     <span> Seguidores: <?= count($usuario->seguidores) ?> </span>
     <span> Seguindo: <?= count($usuario->seguindo) ?> </span>
+    
+    <a href="<?= $base; ?>/perfil/<?=$usuario->getId()?>/amigos">Ver Todos</a>
+    <div class="friends">
+     
+        <?php for ($q = 0; $q < 9; $q++) : ?>
+            <?php if (isset($usuario->seguidores[$q])) : ?>
+                <a href="<?= $base; ?>/perfil/<?= $usuario->seguidores[$q]->getId() ?>"> <?= $usuario->seguidores[$q]->getNome() ?></a>
+                <a href="<?= $base; ?>/perfil/<?= $usuario->seguidores[$q]->getId() ?>"><img src="<?= $base; ?>/assets/<?= $usuario->seguidores[$q]->getAvatar() ?>" />
+                <?php endif; ?>
+            <?php endfor; ?>
+    </div>
 
-
-
-    <?php for ($q = 0; $q < 9; $q++) : ?>
-        <?php if (isset($usuario->seguidores[$q])) : ?>
-            <span><?= $usuario->seguidores[$q]->getId() ?></span:>
-            <?php endif; ?>
-        <?php endfor; ?>
-
+ 
         <?= $render('feed-editor', ['loggedUser' => $loggedUser]); ?>
 
         <?php foreach ($feed['posts'] as $feedItem) : ?>

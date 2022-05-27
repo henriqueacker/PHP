@@ -62,6 +62,30 @@ class ProfileController extends Controller {
         }
             $this->redirect('/perfil/'.$usuario_to);
     }
+    public function friends($atributos =[]){
+        $id = $this->loggedUser->getId();
+       
+
+        if(!empty($atributos['id'])){
+            $id = $atributos['id'];
+        }
+        $usuario = UsuarioHandler::getUsuario($id, true);
+        if(!$usuario){
+            $this->redirect("/");
+        }
+        
+        $isFollowing = false;
+        if($usuario->getId() != $this->loggedUser->getId()){
+            $isFollowing = UsuarioHandler::isFollowing($this->loggedUser->getId(),$usuario->getId() );
+        }
+
+        
+        $this->render('profile_friends',[
+            'loggedUser'=>$this->loggedUser,
+            'usuario'=>$usuario,
+            'isFollowing'=>$isFollowing
+        ]);
+    }
 
 
 
