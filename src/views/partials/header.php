@@ -13,6 +13,7 @@
     <link href="<?= $base ?>/css/feed-editor.css" rel="stylesheet" type="text/css">
     <link href="<?=$base?>/css/profile.css" rel="stylesheet" type="text/css">
     <link href="<?=$base?>/css/footer.css" rel="stylesheet" type="text/css">
+    <link href="<?=$base?>/css/config.css" rel="stylesheet" type="text/css">
     <title>Community X</title>
 </head>
 
