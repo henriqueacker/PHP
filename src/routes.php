@@ -21,8 +21,9 @@ $router->get('/perfil/{id}', 'ProfileController@index');
 $router->get('/perfil', 'ProfileController@index');
 
 $router->get('/amigos', 'ProfileController@friends');
-//$router->get('/pesquisa');
+$router->get('/pesquisa', 'SearchController@index');
 
-//$router->get('/configuracoes');
+$router->get('/configuracoes', "ConfiguracoesController@index");
+$router->post('/configuracoes', "ConfiguracoesController@save");
 
 $router->post('/post/new', 'PostController@new');

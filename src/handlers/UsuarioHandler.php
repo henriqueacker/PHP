@@ -130,5 +130,23 @@ class UsuarioHandler{
             ->where('usuario_to', $usuario_to)
             ->execute();
     }
+    public static function searchUsuario($search){
+        $data =  Usuario::select()->where('nome', 'like', '%'.$search.'%')->get();
+        $usuarios = [];
+        if($data){
+            foreach($data as $usuario){
+                $novoUsuario = new Usuario();
+                $novoUsuario->setId($usuario['id']);
+                $novoUsuario->setNome($usuario['nome']);
+                $novoUsuario->setAvatar($usuario['avatar']);
+
+                $usuarios[] = $novoUsuario;
+                
+            }
+
+
+        }
+        return $usuarios;
+    }
 }
 

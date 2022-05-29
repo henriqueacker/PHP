@@ -101,4 +101,23 @@ class PostHandler
             'currentPage'=> $page
         ];
     }
+    public static function searchPost($search){
+        $data =  Post::select()->where('corpo', 'like', '%'.$search.'%')->get();
+        $posts = [];
+        if($data){
+            foreach($data as $post){
+                $novoPost = new Post();
+                $novoPost->setId($post['id']);
+                $novoPost->setId_usuario($post['id_usuario']);
+                $novoPost->setDt_criacao($post['dt_criacao']);
+                $novoPost->setCorpo($post['corpo']);
+
+                $posts [] = $novoPost;
+                
+            }
+
+
+        }
+        return $posts;
+    }
 }

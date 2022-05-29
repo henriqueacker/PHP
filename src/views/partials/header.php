@@ -23,7 +23,7 @@
         </div>
         
         <form method="get" action="<?=$base;?>/pesquisa">
-        <input class='pesquisa' type='text' placeholder="Pesquisar" name='pesquisa' id='pesquisa' /> 
+            <input class='pesquisa' type='text' placeholder="Pesquisar" name='search' id='search' /> 
         </form>
 
         <div class='logo-left'>
