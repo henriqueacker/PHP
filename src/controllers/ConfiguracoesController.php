@@ -24,16 +24,16 @@ class ConfiguracoesController extends Controller {
 
         $user = UsuarioHandler::getUsuario($this->loggedUser->getId());
 
-        $flash = '';
-        if(!empty($_SESSION['flash'])) {
-            $flash = $_SESSION['flash'];
-            $_SESSION['flash'] = '';
+        $message = '';
+        if(!empty($_SESSION['message'])) {
+            $message = $_SESSION['message'];
+            $_SESSION['message'] = '';
         }
 
         $this->render('config', [
             'loggedUser' => $this->loggedUser,
             'user' => $user,
-            'flash' => $flash
+            'message' => $message
         ]);
     }
     public function save(){
@@ -45,16 +45,27 @@ class ConfiguracoesController extends Controller {
         $password = filter_input(INPUT_POST, 'password');
         $passwordConfirm = filter_input(INPUT_POST, 'passwordconfirm');
         
+        //Valida o nome
+        if(empty($nome)){
+            $_SESSION['message'] = 'Nome deve ser preenchido';
+            $this->redirect('/configuracoes');
+        }
 
+        //Validando as datas
         $dtNascimento = explode('/', $dtNascimento);
         if(count($dtNascimento) != 3) {
-            $_SESSION['flash'] = 'Data de nascimento inválida!';
-            $this->redirect('/config');
+            $_SESSION['message'] = 'Data de nascimento inválida!';
+            $this->redirect('/configuracoes');
         }
         $birthdate = $dtNascimento[2].'-'.$dtNascimento[1].'-'.$dtNascimento[0];
         if(strtotime($birthdate) === false) {
-            $_SESSION['flash'] = 'Data de nascimento inválida!';
-            $this->redirect('/config');
+            $_SESSION['message'] = 'Data de nascimento inválida!';
+            $this->redirect('/configuracoes');
+        }
+
+        if($password != $passwordConfirm){
+            $_SESSION['message'] = 'As senhas não conferem';
+            $this->redirect('/configuracoes');
         }
 
         $usuario  = new Usuario();
@@ -67,6 +78,11 @@ class ConfiguracoesController extends Controller {
         $usuario->setSenha($password);
 
         $update = UsuarioHandler::UpdateDados($usuario);
+
+        if($update){
+            echo "<script>alert('Dados Salvo com sucesso!')</script>";
+            // $this->redirect('/configuracoes');
+        }
         $this->redirect('/configuracoes');
         
     }
