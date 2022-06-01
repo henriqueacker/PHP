@@ -63,18 +63,23 @@ class UsuarioHandler{
         return $token;
     }
     public static function updateDados($usuario){
-      
-
-        $senha =  password_hash( $usuario->getSenha() , PASSWORD_DEFAULT);
+        
         $data = Usuario::update()
             ->set('nome', $usuario->getNome())
             ->set('dt_nascimento', $usuario->getDtNascimento())
-            ->set('senha',   $senha)
             ->set('cidade', $usuario->getCidade())
-            // ->set('avatar', $usuario->getAvatar())   
-            // ->set('capa', $usuario->getCapa())   
+            ->set('avatar', $usuario->getAvatar())   
+            ->set('capa', $usuario->getCapa())   
             ->where('id', $usuario->getId())
             ->execute();
+        return $data;
+    }
+    public static function alterarSenha($senha, $id){
+        $data = Usuario::update()
+        ->set('senha',  $senha)
+        ->where('id', $id)
+        ->execute();
+
         return $data;
     }
 
